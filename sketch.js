@@ -2,7 +2,7 @@ var player;
 var stars = [];
 var enemies = [];
 var bullets = [];
-var enemySpeed = 6;
+var enemySpeed = 4;
 var bulletSpeed = 10;
 var w = 40;
 var h = 40;
@@ -29,6 +29,11 @@ function setup() {
 function draw() {
 	//background(125,205,255);
 	background(0,0,0);
+
+	//dificultad
+	if(intervalo % 900 == 0){
+		enemySpeed += 2;
+	}
 
 	for (var i = bullets.length - 1; i >= 0; i--) {
 		bullets[i].show();
@@ -62,7 +67,7 @@ function draw() {
 		stars[i].update();
 	}
 
-	if(intervalo % 3 == 0){
+	if(intervalo % 10 == 0){
 		var enemy = new Enemy(enemySpeed);
 		enemies.push(enemy);
 	}
@@ -90,6 +95,14 @@ function draw() {
 	//score
 	updateScore();
 
+	//instrucciones
+	if(intervalo < 300){
+		fill(255,255,255);
+		textAlign(CENTER);
+		textSize(20);
+		text("Controles:\n A: mover izquierda \n D: mover derecha \n Espacio: disparar", canvas.width/2, 20);
+	}
+
 	if(player.x >= canvas.width - 100 || player.x <= 0){
 		player.setDir(0);
 	}
@@ -104,13 +117,13 @@ function draw() {
 
 function drawGameOver(){
 	fill(255,100,100);
-	rect(canvas.width/3, canvas.height/2 - 50, 266, 100);
+	rect(canvas.width/3, canvas.height/2 - 50, 266, 120);
 	fill(255,255,255);
 	textAlign(CENTER);
 	textSize(44);
 	text("Has perdido!", canvas.width/2, canvas.height/2);
-	textSize(18);
-	text("Puntaje Obtenido: "+player.points, canvas.width/2, canvas.height/2 + 40);
+	textSize(16);
+	text("Puntaje Obtenido: "+player.points+"\nTiempo sobrevivido: "+round(intervalo/60)+" seg", canvas.width/2, canvas.height/2 + 40);
 }
 
 function updateScore(){
