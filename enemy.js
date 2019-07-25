@@ -2,7 +2,7 @@ class Enemy{
 
 	constructor(vel){
 		this.x = random(canvas.width);
-		this.y = -50;
+		this.y = -60;
 		this.w = 55;
 		this.h = 40;
 		this.velY = vel;

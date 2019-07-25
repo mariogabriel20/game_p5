@@ -12,6 +12,7 @@ class Bullet{
 	show(){
 		fill(255,0,0);
 		rect(this.x,this.y,this.w,this.h);
+		image(bulletImg,this.x - 17.5,this.y);
 	}
 
 	update(){

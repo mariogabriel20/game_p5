@@ -14,11 +14,13 @@ var gameOver = false;
 var playerImg;
 var playerImg2;
 var enemyImg;
+var bulletImg;
 
 function preload(){
 	playerImg = loadImage("Imágenes/plane.png");
 	playerImg2 = loadImage("Imágenes/plane2.png");
 	enemyImg = loadImage("Imágenes/enemy.png");
+	bulletImg = loadImage("Imágenes/bullet.png");
 }
 
 function setup() {
@@ -67,7 +69,7 @@ function draw() {
 		stars[i].update();
 	}
 
-	if(intervalo % 10 == 0){
+	if(intervalo % 3 == 0){
 		var enemy = new Enemy(enemySpeed);
 		enemies.push(enemy);
 	}
@@ -112,7 +114,22 @@ function draw() {
 		noLoop();
 	}
 
+	/*if(intervalo == 0){
+		drawStartGame();
+	}*/
+
 	intervalo++;
+
+	/*if(gameStart == true){
+		loop();
+	}
+	console.log(gameStart);*/
+}
+
+function drawStartGame(){
+	textAlign(CENTER);
+	textSize(36);
+	text("Presiona espacio para comenzar", canvas.width/2, canvas.height/2);
 }
 
 function drawGameOver(){
