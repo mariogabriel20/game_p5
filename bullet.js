@@ -1,18 +1,23 @@
 class Bullet{
 	
-	constructor(x,y,velY){
+	constructor(x,y,w,h,velY,damage,image){
 		this.x = x;
 		this.y = y;
 		this.velY = velY;
-		this.w = 5;
-		this.h = 40;
+		this.w = w;
+		this.h = h;
+		this.image = image;
+		this.damage = damage;
 		this.delete = false;
 	}
 
 	show(){
 		fill(255,0,0);
-		rect(this.x,this.y,this.w,this.h);
-		image(bulletImg,this.x - 17.5,this.y);
+		if(this.damage == 1){
+			image(this.image,this.x - this.w/2 - 17.5,this.y);
+		}else{
+			image(this.image,this.x - this.w/2 - 12.5,this.y);
+		}
 	}
 
 	update(){
@@ -24,7 +29,7 @@ class Bullet{
 	}
 
 	collides(enemy){
-		if(this.x + this.w >= enemy.x && this.x <= enemy.x + enemy.w){
+		if(this.x + this.w/2 >= enemy.x && this.x - this.w/2 <= enemy.x + enemy.w){
 			if(this.y <= enemy.y + enemy.h){
 				return true;
 			}
