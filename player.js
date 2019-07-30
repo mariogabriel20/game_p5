@@ -1,6 +1,6 @@
 class Player{
 
-	constructor(x,y,velX,w,h, image){
+	constructor(x,y,velX,w,h,health,image){
 		this.x = x;
 		this.y = y;
 		this.velX = velX;
@@ -8,6 +8,8 @@ class Player{
 		this.h = h;
 		this.xdir = 0;
 		this.points = 0;
+		this.damaged = false;
+		this.health = health;
 		this.image = image;
 	}
 
@@ -40,6 +42,19 @@ class Player{
 		else{
 			this.image = playerImg;
 		}
+	}
+
+	getHurt(){
+		if(this.damaged == false){
+			tint(255, 123, 123);
+			image(this.image,this.x,this.y);
+			this.damaged = true;
+		}else{
+			noTint();
+			image(this.image,this.x,this.y);
+			this.damaged = false;
+		}
+		noTint();
 	}
 
 	score(enemy){

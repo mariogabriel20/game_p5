@@ -1,6 +1,6 @@
 class Enemy{
 
-	constructor(vel, life, image){
+	constructor(vel,life,damage,image){
 		this.x = random(canvas.width);
 		this.y = -60;
 		this.w = 55;
@@ -8,6 +8,7 @@ class Enemy{
 		this.velY = vel;
 		this.delete = false;
 		this.life = life;
+		this.damage = damage;
 		this.image = image;
 	}
 
