@@ -14,18 +14,18 @@ class Player{
 	}
 
 	show(){
-		image(this.image,this.x,this.y);
+		image(this.image,this.x - 50,this.y);
 	}
 
 	collides(object){
-		if(this.x + 88 >= object.x && this.x + 12 <= object.x + object.w){
+		if(this.x + 38 >= object.x && this.x - 38 <= object.x + object.w){
 			if(this.y + 30 <= object.y + object.h){
-				if(this.x + 50 >= object.x && this.x + 50 <= object.x + object.w){
+				if(this.x >= object.x && this.x <= object.x + object.w){
 					return true;
 				}
 			}
-			if(this.y + 84 <= object.y + object.h){
-				if(this.x + 88 >= object.x && this.x + 12 <= object.x + object.w){
+			if(this.y + 76 <= object.y + object.h){
+				if(this.x + 38 >= object.x && this.x - 38 <= object.x + object.w){
 					return true;
 				}
 			}
@@ -47,11 +47,11 @@ class Player{
 	getHurt(){
 		if(this.damaged == false){
 			tint(255, 123, 123);
-			image(this.image,this.x,this.y);
+			image(this.image,this.x - 50,this.y);
 			this.damaged = true;
 		}else{
 			noTint();
-			image(this.image,this.x,this.y);
+			image(this.image,this.x - 50,this.y);
 			this.damaged = false;
 		}
 		noTint();
@@ -60,8 +60,10 @@ class Player{
 	score(enemy){
 		if(enemy.image == enemyImg){
 			this.points++;
-		}else{
+		}else if(enemy.image == enemyImg2){
 			this.points += 2;
+		}else{
+			this.points += 3;
 		}
 	}
 

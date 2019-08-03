@@ -20,6 +20,22 @@ class Bullet{
 		}
 	}
 
+	showUlti(){
+		push();
+		image(this.image,this.x - this.w/2 - 299,this.y + canvas.height);
+		pop();
+	}
+
+	changeImg(){
+		if(this.image == ultiImg){
+			this.image = ultiImg2;
+		}else if(this.image == ultiImg2){
+			this.image = ultiImg3;
+		}else{
+			this.image = ultiImg;
+		}
+	}
+
 	update(){
 		this.y -= this.velY;
 	}
@@ -38,6 +54,5 @@ class Bullet{
 			return false;
 		}
 	}
-
 
 }
