@@ -1,3 +1,9 @@
+//Resolución del juego
+//(800x600),(864,648),(960x720),(1024,768)
+var screenWidth = 864;
+var screenHeight = 648;
+
+//variables globales
 var player;
 var stars = [];
 var enemies = [];
@@ -59,7 +65,7 @@ function preload(){
 }
 
 function setup() {
-	window = createCanvas(960,720); //(800x600),(864,648),(960x720),(1024,768) 
+	window = createCanvas(screenWidth,screenHeight); 
 	resetGame();
 }
 
@@ -492,4 +498,3 @@ function keyPressed(){
 			}
 	}
 }
-
