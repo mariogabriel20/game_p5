@@ -1,7 +1,7 @@
 //Resolución del juego
-//(800x600),(864,648),(960x720),(1024,768),(1200,675)
-var screenWidth = 1200;
-var screenHeight = 675;
+//(800x600),(864,648),(960x720),(1024,768),(1184,666)
+var screenWidth = 1184;
+var screenHeight = 666;
 
 //variables globales
 var player;
